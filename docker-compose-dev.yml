@@ -12,7 +12,6 @@ services:
       - .dev.env
     volumes:
       - .:/ms-auth
-      - node_modules:/ms-auth/node_modules
     depends_on:
       - mongodb
 
@@ -34,5 +33,4 @@ networks:
     external: true
 
 volumes:
-  node_modules:
   mongodbdata:

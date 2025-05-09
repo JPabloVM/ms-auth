@@ -95,7 +95,7 @@ docker compose -f docker-compose-dev.yml up --build
 
 - `name`: obrigatório
 - `email`: obrigatório e válido
-- `pass`: obrigatório (mínimo 6 caracteres)
+- `password`: obrigatório (mínimo 6 caracteres)
 - `status`: opcional
 - `deletedAt`: opcional
 
@@ -208,7 +208,7 @@ docker compose -f docker-compose-dev.yml up --build
 
 - `name`: required
 - `email`: required and valid
-- `pass`: required (min 6 characters)
+- `password`: required (min 6 characters)
 - `status`: optional
 - `deletedAt`: optional
 

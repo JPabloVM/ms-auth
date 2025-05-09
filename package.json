@@ -1,6 +1,6 @@
 {
   "name": "ms-auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Microservice authentication",
   "main": "server.ts",
   "author": "JPabloVM <joaopablo778@gmail.com>",
@@ -10,7 +10,9 @@
     "dev": "NODE_ENV=dev nodemon -L",
     "staging": "NODE_ENV=staging tsc && node dist/server.js",
     "release": "standard-version",
-    "docs": "typedoc"
+    "docs": "typedoc",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "dependencies": {
     "dayjs": "^1.11.13",

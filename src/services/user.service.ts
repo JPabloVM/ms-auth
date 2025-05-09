@@ -1,5 +1,4 @@
-import { Schema } from 'mongoose';
-
+import mongoose, { Schema } from 'mongoose';
 import UserModel from '../models/user.model';
 import { CreateUserDTO, UpdateUserDTO } from '../types/user.types';
 
@@ -18,7 +17,7 @@ export class UserService {
    */
   async create(data: CreateUserDTO) {
     try {
-      return await UserModel.create(data);
+      return await UserModel.create({ ...data });
     } catch (error) {
       throw error;
     }
@@ -44,7 +43,7 @@ export class UserService {
    * @param id - Identificador do usuário.
    * @returns Documento do usuário encontrado ou `null`.
    */
-  async getById(id: Schema.Types.ObjectId) {
+  async getById(id: mongoose.Types.ObjectId) {
     try {
       return await UserModel.findById(id);
     } catch (error) {
@@ -59,9 +58,9 @@ export class UserService {
    * @param data - Dados a serem atualizados.
    * @returns Documento do usuário atualizado.
    */
-  async update(id: Schema.Types.ObjectId, data: UpdateUserDTO) {
+  async update(id: mongoose.Types.ObjectId, data: UpdateUserDTO) {
     try {
-      return await UserModel.findByIdAndUpdate(id, data);
+      return await UserModel.findByIdAndUpdate(id, data, { new: true });
     } catch (error) {
       throw error;
     }
@@ -73,9 +72,9 @@ export class UserService {
    * @param id - Identificador do usuário.
    * @returns Documento do usuário após exclusão lógica.
    */
-  async delete(id: Schema.Types.ObjectId) {
+  async delete(id: mongoose.Types.ObjectId) {
     try {
-      return await UserModel.findByIdAndUpdate(id, { status: false, deletedAt: new Date() });
+      return await UserModel.findByIdAndUpdate(id, { status: false, deletedAt: new Date() }, { new: true });
     } catch (error) {
       throw error;
     }

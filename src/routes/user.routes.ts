@@ -11,7 +11,7 @@ userRoutes.get('/users', userControler.get);
 
 userRoutes.get('/users/:id', userControler.getById);
 
-userRoutes.put('/users/:id', userControler.update);
+userRoutes.patch('/users/:id', userControler.update);
 
 userRoutes.delete('/users/:id', userControler.delete);
 

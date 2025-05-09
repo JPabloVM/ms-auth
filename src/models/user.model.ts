@@ -18,7 +18,7 @@ export interface IUser {
   email: string;
 
   /** Senha criptografada do usuário */
-  pass: string;
+  password: string;
 
   /** Data de criação do documento */
   createdAt: Date;
@@ -43,8 +43,9 @@ const userSchema = new Schema<IUser>(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
-    pass: {
+    password: {
       type: String,
       required: true,
     },

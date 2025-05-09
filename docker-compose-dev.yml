@@ -1,0 +1,38 @@
+name: 'ms-auth'
+services:
+  ms-auth:
+    build:
+      dockerfile: ./Dockerfile.dev
+    restart: always
+    ports:
+      - 5000:5000
+    networks:
+      - ms-auth-network
+    env_file:
+      - .dev.env
+    volumes:
+      - .:/ms-auth
+      - node_modules:/ms-auth/node_modules
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:6
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: devuser
+      MONGO_INITDB_ROOT_PASSWORD: devpass
+    volumes:
+      - mongodbdata:/data/db
+    networks:
+      - ms-auth-network
+
+networks:
+  ms-auth-network:
+    external: true
+
+volumes:
+  node_modules:
+  mongodbdata:
